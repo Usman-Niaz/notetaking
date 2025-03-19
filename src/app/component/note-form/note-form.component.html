@@ -1,0 +1,60 @@
+<div class="max-w-lg bg-white p-6 rounded-lg shadow-lg">
+  <h1 class="text-2xl font-bold text-gray-800 mb-4">Add New Note</h1>
+  
+  <!-- Success Toast Inside the Card -->
+  @if (showSuccessToast) {
+    <div class="bg-green-100 text-green-700 px-4 py-3 rounded-md shadow-md flex items-center space-x-3 mb-4">
+      <i class="bi bi-check-circle text-xl"></i>
+      <span>Note added successfully!</span>
+    </div>
+  }
+
+  <form class="space-y-4" [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+    <!-- Title Input -->
+    <div>
+      <label for="title" class="block text-sm font-medium text-gray-700">
+        Note Name
+      </label>
+      <input
+        type="text"
+        id="title"
+        placeholder="Enter note title"
+        formControlName="title"
+        class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-300 focus:outline-none"
+      />
+
+      <!-- Validation Message (Using @if) -->
+      @if (noteForm.controls['title'].invalid && noteForm.controls['title'].touched) {
+        <p class="text-red-500 text-sm mt-1">Title is required.</p>
+      }
+    </div>
+
+    <!-- Content Input -->
+    <div>
+      <label for="content" class="block text-sm font-medium text-gray-700">
+        Content
+      </label>
+      <input
+        type="text"
+        id="content"
+        placeholder="Enter note content"
+        formControlName="content"
+        class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-300 focus:outline-none"
+      />
+
+      <!-- Validation Message (Using @if) -->
+      @if (noteForm.controls['content'].invalid && noteForm.controls['content'].touched) {
+        <p class="text-red-500 text-sm mt-1">Content is required.</p>
+      }
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="w-full bg-orange-500 text-white py-2 rounded-md hover:bg-orange-600 transition duration-200"
+      [disabled]="noteForm.invalid"
+    >
+      Add New Note
+    </button>
+  </form>
+</div>

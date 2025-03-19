@@ -1,0 +1,35 @@
+<main class="p-6 flex-col">
+  <div 
+  class="w-80 bg-white rounded-lg p-4 flex items-center space-x-3 cursor-pointer" 
+  (click)="openPopup()">
+  <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
+    <i class="bi bi-stickies-fill"></i>
+  </div>
+  <div>
+    <p class="text-sm text-gray-500">New Note</p>
+    <h2 class="text-lg font-semibold">Take a Note</h2>
+  </div>
+</div>
+
+  <div class="w-80 p-3 mt-3">
+    <p class="font-semibold text-black text-base">
+      All Notes <span class="text-gray-500 text-xs">· 16 Notes</span>
+    </p>
+  </div>
+</main>
+
+@if (selectedAddNote) {
+  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
+    <div class="bg-orange-100 p-8 rounded-lg shadow-lg w-[500px] h-[500px] flex flex-col">
+      
+      <!-- Note Form -->
+      <app-note-form class="flex-grow" />
+  
+      <!-- Button Wrapper to Push Button to Bottom Right -->
+      <div class="mt-auto flex justify-end">
+        <button class="bg-orange-400 text-white px-4 py-2 rounded-lg" (click)="closePopup()">Close</button>
+      </div>
+    </div>
+  </div>
+  
+}
