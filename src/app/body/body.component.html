@@ -2,9 +2,9 @@
 
 <div class="">
 
-    <app-add-note />
+    <app-add-note [selectedNote]="selectedNote"/>
 </div>
 <div>
-    <app-card />
+  <app-card (selectNote)="selectsNotes($event)" />
   </div>
 </body>

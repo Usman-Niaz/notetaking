@@ -13,7 +13,8 @@
           <!-- Icon takes 3/10 of space -->
           <div class="flex-[3] flex justify-end ">
             <h2 class="text-lg font-semibold">
-              <i class="bi bi-pin-angle p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500 cursor-pointer"></i>
+              <i class="bi bi-pin-angle p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500 cursor-pointer"
+              ></i>
             </h2>
           </div>
         </div>
@@ -26,12 +27,16 @@
           <i class="bi bi-eye text-base p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500 cursor-pointer"
              (click)="openPopup(note)">
           </i>
-          <i class="bi bi-trash text-base p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500"></i>
+          <i class="bi bi-trash text-base p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500"
+          (click)="deleteNote(note.id)">
+          
+          </i>
         </div>
       
         <!-- Always Visible Sticky Pencil Icon -->
         <div class="ml-auto mr-2">
-          <i class="bi bi-pencil p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500 cursor-pointer"></i>
+          <i class="bi bi-pencil p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500 cursor-pointer"
+          (click)="editNote(note)"></i>
         </div>
       </div>
       
@@ -54,3 +59,4 @@
   </div>
   
 }
+

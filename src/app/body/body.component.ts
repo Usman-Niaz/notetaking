@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AddNoteComponent } from "../add-note/add-note.component";
 import { CardComponent } from "../card/card.component";
+import { Note } from '../interfaces/note';
 
 @Component({
   selector: 'app-body',
@@ -9,5 +10,10 @@ import { CardComponent } from "../card/card.component";
   styleUrl: './body.component.css'
 })
 export class BodyComponent {
+  selectedNote!: Note; // ✅ Store selected note
 
+  selectsNotes(note: Note) {
+    console.log("Received note in BodyComponent:", note);
+    this.selectedNote = note; // ✅ Update selected note
+  }
 }
