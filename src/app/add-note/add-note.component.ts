@@ -12,6 +12,7 @@ export class AddNoteComponent implements OnInit {
   selectedAddNote: boolean = false; // Change 'any' to 'boolean'
   @Input() selectedNote!: Note;  // ✅ Receive from BodyComponent
   @Output() noteAdded = new EventEmitter<Note>(); // ✅ Emit to BodyComponent
+  
 
   constructor(private noteService: NoteService){}
 
