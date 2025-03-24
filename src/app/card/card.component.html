@@ -1,48 +1,56 @@
 <!-- Cards Container -->
-<div class="flex flex-wrap gap-4 p-4">
-  @for (note of notes; track note.id) {
-    <main class="p-6 w-80 flex flex-col cursor-pointer bg-orange-300 rounded-3xl shadow-md ml-4 mb-4">
-      <div class="p-4 flex items-center">
-        <div class="w-full flex items-center">
-          <!-- Title takes 7/10 of space -->
-          <div class="flex-[7] overflow-hidden">
-            <h2 class="text-lg font-semibold whitespace-nowrap overflow-hidden text-ellipsis">
-              {{ note.title }} &nbsp;
-            </h2>
+<div>
+  <div class="w-80 p-3 mt-3">
+    <p class="font-semibold text-black text-base">
+      All Notes <span class="text-gray-500 text-xs"> {{ notes.length }} Notes</span>
+    </p>
+  </div>
+  <div class="flex flex-wrap gap-4 p-4 ">
+    @for (note of notes; track note.id) {
+      <main class="p-6 w-80 flex flex-col cursor-pointer bg-orange-300 rounded-3xl shadow-md ml-4 mb-4">
+        <div class="p-4 flex items-center">
+          <div class="w-full flex items-center">
+            <!-- Title takes 7/10 of space -->
+            <div class="flex-[7] overflow-hidden">
+              <h2 class="text-lg font-semibold whitespace-nowrap overflow-hidden text-ellipsis">
+                {{ note.title }} &nbsp;
+              </h2>
+            </div>
+            <!-- Icon takes 3/10 of space -->
+            <div class="flex-[3] flex justify-end ">
+              <h2 class="text-lg font-semibold">
+                <i class="bi bi-pin-angle p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500 cursor-pointer"
+                ></i>
+              </h2>
+            </div>
           </div>
-          <!-- Icon takes 3/10 of space -->
-          <div class="flex-[3] flex justify-end ">
-            <h2 class="text-lg font-semibold">
-              <i class="bi bi-pin-angle p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500 cursor-pointer"
-              ></i>
-            </h2>
+        </div>
+  
+        <!-- Icons (Hidden Initially, Shown on Hover) -->
+        <div class="group flex items-center justify-between w-full p-3 relative">
+          <!-- Hidden Icons (Appear on Hover) -->
+          <div class="hidden group-hover:flex flex-1 justify-center gap-10 transition duration-300">
+            <i class="bi bi-eye text-base p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500 cursor-pointer"
+               (click)="openPopup(note)">
+            </i>
+            <i class="bi bi-trash text-base p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500"
+            (click)="deleteNote(note.id)">
+            
+            </i>
+          </div>
+        
+          <!-- Always Visible Sticky Pencil Icon -->
+          <div class="ml-auto mr-2">
+            <i class="bi bi-pencil p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500 cursor-pointer"
+            (click)="editNote(note)"></i>
           </div>
         </div>
-      </div>
-
-      <!-- Icons (Hidden Initially, Shown on Hover) -->
-      <div class="group flex items-center justify-between w-full p-3 relative">
-        <!-- Hidden Icons (Appear on Hover) -->
-        <div class="hidden group-hover:flex flex-1 justify-center gap-10 transition duration-300">
-          <i class="bi bi-eye text-base p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500 cursor-pointer"
-             (click)="openPopup(note)">
-          </i>
-          <i class="bi bi-trash text-base p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500"
-          (click)="deleteNote(note.id)">
-          
-          </i>
-        </div>
-      
-        <!-- Always Visible Sticky Pencil Icon -->
-        <div class="ml-auto mr-2">
-          <i class="bi bi-pencil p-2 rounded-full bg-white transition duration-300 hover:bg-white hover:text-orange-500 cursor-pointer"
-          (click)="editNote(note)"></i>
-        </div>
-      </div>
-      
-    </main>
-  }
+        
+      </main>
+    }
+  </div>
 </div>
+
 
 <!-- Popup for Viewing Note Details -->
 @if (selectedNote) {

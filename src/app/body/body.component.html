@@ -1,10 +1,21 @@
-<body class="ml-20 ">
 
-<div class="">
+<!-- Components -->
+<body class="ml-14 sm:ml-20">
+  <!-- Toast Notification -->
 
+
+  <div>
+  
     <app-add-note [selectedNote]="selectedNote"/>
-</div>
-<div>
-  <app-card (selectNote)="selectsNotes($event)" />
+  </div>
+  <div>
+    @if (showToast) {
+      <div class="fixed  right-5 bg-red-200 text-red-800 px-6 py-3 rounded-lg shadow-md transition-opacity duration-500">
+        Note deleted successfully!
+      </div>
+    } @else {
+      <div class="hidden"></div>
+    }
+    <app-card (selectNote)="selectsNotes($event)" (noteDeleted)="showDeleteToast()"/>
   </div>
 </body>

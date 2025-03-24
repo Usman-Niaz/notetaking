@@ -13,6 +13,8 @@ export class CardComponent implements OnInit { // ✅ Implement OnInit
   selectedNote: any = null;
   isEditMode:boolean=false;
   @Output() selectNote = new EventEmitter<Note>()
+  @Output() noteDeleted = new EventEmitter<void>();
+
 
   openPopup(note: any) {
     this.selectedNote = note;
@@ -34,6 +36,7 @@ export class CardComponent implements OnInit { // ✅ Implement OnInit
   }
   deleteNote(id:number): void{
     this.noteservice.deleteNote(id);
+    this.noteDeleted.emit(); // ✅ Emit delete event
   }
   
   editNote(note: Note): void {

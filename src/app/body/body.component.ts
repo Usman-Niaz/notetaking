@@ -10,10 +10,18 @@ import { Note } from '../interfaces/note';
   styleUrl: './body.component.css'
 })
 export class BodyComponent {
+ 
   selectedNote!: Note; // ✅ Store selected note
-
+  showToast: boolean = false;
+  
   selectsNotes(note: Note) {
     console.log("Received note in BodyComponent:", note);
     this.selectedNote = note; // ✅ Update selected note
   }
+  showDeleteToast() {
+    this.showToast = true;
+    setTimeout(() => {
+      this.showToast = false;
+    }, 3000);
+}
 }
